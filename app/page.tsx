@@ -11,7 +11,6 @@ export default function Home() {
   useEffect(() => {
     const fetchStudentName = async () => {
       try {
-        // Fetch from our API route (which simulates localhost:3000/user)
         const response = await fetch("/api/user");
         if (!response.ok) {
           throw new Error("Falha ao buscar dados do estudante");
@@ -31,10 +30,9 @@ export default function Home() {
   useEffect(() => {
     if (!studentName || displayedText.length >= studentName.length) return;
 
-    // Create typing effect by adding one character at a time
     const typingTimer = setTimeout(() => {
       setDisplayedText(studentName.substring(0, displayedText.length + 1));
-    }, 100); // Adjust speed of typing here
+    }, 100);
 
     return () => clearTimeout(typingTimer);
   }, [displayedText, studentName]);
